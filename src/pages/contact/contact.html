@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Compras</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <ion-list>
+        <ion-item-sliding   *ngFor="let favorite of favorites  ; let i = index; " > 
+            <button ion-item (click)="itemTapped(favorite)">
+                <ion-thumbnail item-left >
+                    <img src="{{favorite.property.thumbnail}}"/>
+                </ion-thumbnail>
+                <p>Producto {{i+1}}</p>
+            <!--     Precio:$<br>
+    <input type="text" ng-model="favorite.property.price"><br>-->
+                <h2>{{favorite.property.plu}}</h2>
+                <p>{{favorite.property.name}}, {{favorite.property.desc}}, $ {{favorite.property.price }}</p>
+            </button>
+            <ion-item-options>
+               <button ion-button icon-only danger>
+                    <ion-icon name="add"></ion-icon>
+                </button>
+                <button ion-button icon-only (click)="deleteItem(favorite)" danger>
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+              <!--  <button danger (click)="deleteItem(favorite)">Delete</button>-->
+            </ion-item-options>
+              
+        </ion-item-sliding>
+    </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p>contador= {{total}}</p>
+    <ion-buttons end>
+      <button ion-button icon-end color="royal">
+        Send
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+

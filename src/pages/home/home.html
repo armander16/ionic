@@ -1,0 +1,119 @@
+<!--
+<ion-header>
+  <ion-navbar>
+    <ion-title>Escaner 2.1</ion-title>
+  </ion-navbar>
+</ion-header> 
+-->
+
+<ion-header>
+  <ion-navbar background = "blue">
+    <ion-title >Escaner 2.2.2</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button icon-only clear full round (click)="scan()" >
+        <ion-icon name="qr-scanner"  ></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-segment>
+      <ion-segment-button value="new"  >
+        Agregar
+      </ion-segment-button>
+      <ion-segment-button value="hot">
+        Datos
+      </ion-segment-button>
+    </ion-segment>
+    <ion-buttons end>
+      <button ion-button icon-only clear>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+<!--<h2> -->
+ <!-- <View style={{width: 40, alignItems: 'center', justifyContent: 'center'}}> -->
+
+   <!-- <ion-icon  name="qr-scanner" color = "blue"  md="md-qr-scanner" full round (click)="scan()" ></ion-icon> -->
+
+    <!--</View> -->
+
+
+ <!-- <button ion-button color="blue" full round (click)="scan()">Escanear</button> -->
+<!--</h2> -->
+
+
+
+<!--<ion-card *ngIf="productFound"> -->
+
+  <ion-list inset *ngIf="productFound">
+
+        <ion-item-sliding     *ngFor="let P of selectedProduct"  > 
+
+    <ion-item>  
+      <!--<ul> 
+        <li> CodigoBarra:{{P.plu}}  </li>
+        <li> Producto:{{P.name}}  </li>
+        <li> Precio: {{P.price}}    </li>
+      </ul>  -->
+
+              <tr>  <td> Codigo:{{P.plu}}   </td> </tr>
+             <tr> <td> Producto:{{P.name}}  </td> </tr>
+          <tr> <td> lote: {{P.lote}}  </td>  </tr> 
+
+         <tr> <td> Precio: {{P.price}}  </td>  </tr> 
+       </ion-item>
+
+          <ion-item-options>
+                <button ion-button icon-only (click)="editNote(P)" light>
+                    <ion-icon name="paper"></ion-icon>
+                  
+                </button> 
+                <button ion-button icon-only (click)="deleteNote(P)" danger>
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+
+                    <button ion-button expandable (click)="favorite(P)">
+      <ion-icon name="cart"></ion-icon>
+    </button>
+
+            </ion-item-options>
+
+        </ion-item-sliding >
+
+</ion-list>
+
+
+<!--
+  <ion-card-header>
+    <h2>Precio: $ {{selectedProduct.price}}</h2>
+  </ion-card-header>
+  <ion-card-content>
+    <ul>
+      <li>{{selectedProduct.plu}}</li>
+      <li>{{selectedProduct.nombre}}</li>
+    </ul>
+  </ion-card-content>
+</ion-card>
+-->
+
+</ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <p>Ash, y, Brock</p>
+    <ion-buttons end>
+      <button ion-button icon-end color="royal">
+        Send
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
